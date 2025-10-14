@@ -1,4 +1,8 @@
 const tableBody = document.querySelector(".tableBody");
+const inputTitle = document.querySelector("#title")
+const inputAuthor = document.querySelector("#author")
+const inputPages = document.querySelector("#pages")
+const addBookBtn = document.querySelector("#addBook");
 
 const myLibrary = [];
 
@@ -30,8 +34,19 @@ function addElementToTable() {
             const keyTh = document.createElement("th");
             objectTr.appendChild(keyTh);
             keyTh.textContent = item[key];
-
         }
     })
 }
 
+addBookBtn.addEventListener("click", (event) => {
+    event.preventDefault();
+    const newBook = new Book(`${inputTitle.value}`, `${inputAuthor.value}`, `${inputPages.value}`);
+    addBookToLibrary(newBook);
+    addElementToTable();
+})
+
+
+//make function that loops through the array and displays each book on the page
+//the books would be displayed in a table or a "card"
+//a button for a form that adds books
+//a button that deletes books

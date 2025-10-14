@@ -15,6 +15,15 @@ function Book(title, author, pages) {
 
 function addBookToLibrary(book) {
     myLibrary.push(book);
+    const objectTr = document.createElement("tr");
+    tableBody.appendChild(objectTr);
+
+    for (let key in book) {
+
+        const keyTh = document.createElement("th");
+        objectTr.appendChild(keyTh);
+        keyTh.textContent = book[key];
+    }
 }
 
 const book1 = new Book("The Hobbit", "J.R.R. Tolkien", "295 pages");
@@ -22,27 +31,10 @@ const book2 = new Book("Harry Potter", "J.K. Rowling", "500 pages");
 
 
 
-function addElementToTable() {
-
-    myLibrary.forEach((item) => {
-
-        const objectTr = document.createElement("tr");
-        tableBody.appendChild(objectTr);
-
-        for (let key in item) {
-
-            const keyTh = document.createElement("th");
-            objectTr.appendChild(keyTh);
-            keyTh.textContent = item[key];
-        }
-    })
-}
-
 addBookBtn.addEventListener("click", (event) => {
     event.preventDefault();
     const newBook = new Book(`${inputTitle.value}`, `${inputAuthor.value}`, `${inputPages.value}`);
     addBookToLibrary(newBook);
-    addElementToTable();
 })
 
 

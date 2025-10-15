@@ -20,15 +20,26 @@ function addBookToLibrary(book) {
 
     for (let key in book) {
 
-        const keyTh = document.createElement("th");
-        objectTr.appendChild(keyTh);
-        keyTh.textContent = book[key];
+        const keyTd = document.createElement("td");
+        objectTr.appendChild(keyTd);
+        keyTd.textContent = book[key];
     }
+
+    //delete book button
+    const deleteBtn = document.createElement("button");
+    deleteBtn.textContent = "Delete";
+    deleteBtn.setAttribute("type", "button");
+    deleteBtn.addEventListener("click", () => {
+        tableBody.removeChild(objectTr);
+        myLibrary.splice(myLibrary.indexOf(book), 1);
+    })
+    objectTr.appendChild(deleteBtn);
 }
 
 const book1 = new Book("The Hobbit", "J.R.R. Tolkien", "295 pages");
 const book2 = new Book("Harry Potter", "J.K. Rowling", "500 pages");
-
+addBookToLibrary(book1);
+addBookToLibrary(book2);
 
 
 addBookBtn.addEventListener("click", (event) => {
@@ -36,9 +47,3 @@ addBookBtn.addEventListener("click", (event) => {
     const newBook = new Book(`${inputTitle.value}`, `${inputAuthor.value}`, `${inputPages.value}`);
     addBookToLibrary(newBook);
 })
-
-
-//make function that loops through the array and displays each book on the page
-//the books would be displayed in a table or a "card"
-//a button for a form that adds books
-//a button that deletes books

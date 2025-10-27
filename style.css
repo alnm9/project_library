@@ -1,0 +1,157 @@
+:root {
+    --outside-color-border: rgb(114, 83, 155);
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    /* min-height: 100vh; */
+}
+
+.container {
+    margin-top: 120px;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: start;
+    align-items: center;
+    gap: 100px;
+}
+
+#tableDiv {}
+
+#formDiv {}
+
+table {
+    /* border-collapse: collapse; */
+    border-spacing: 0;
+    text-align: center;
+}
+
+
+
+th,
+td {
+    border: none;
+    padding: 18px 0px;
+    width: 280px;
+    font-size: 18px;
+}
+
+
+th {
+    padding: 24px 0px;
+    font-size: 21px;
+}
+
+tr td:first-child,
+tr th:first-child {
+    border-left: 8px solid var(--outside-color-border);
+
+}
+
+
+td {
+    border-bottom: 2px solid var(--outside-color-border);
+    color: rgb(28, 0, 54);
+}
+
+tbody tr:last-child td {
+    border-bottom: 8px solid var(--outside-color-border);
+}
+
+th {
+    border-bottom: 4px solid var(--outside-color-border);
+    border-top: 8px solid var(--outside-color-border);
+    color: white;
+}
+
+
+tbody tr td:last-child,
+tbody tr td:nth-last-child(2),
+thead tr th:last-child,
+thead tr th:nth-last-child(2) {
+
+    width: 180px;
+}
+
+
+
+thead tr th:last-child,
+tbody tr td:last-child {
+    border-right: 8px solid var(--outside-color-border);
+}
+
+dialog {
+    margin: auto;
+}
+
+tr th:nth-child(3),
+tr td:nth-child(3),
+tr th:nth-child(4),
+tr td:nth-child(4) {
+    width: 200px;
+}
+
+thead tr th:first-child {
+    border-top-left-radius: 18px;
+}
+
+thead tr th:last-child {
+    border-top-right-radius: 18px;
+}
+
+tbody tr:last-child .title {
+    border-bottom-left-radius: 18px;
+}
+
+tbody tr:last-child td:last-child {
+    border-bottom-right-radius: 18px;
+}
+
+thead tr {
+    background-color: var(--outside-color-border);
+}
+
+tbody tr:nth-child(2n) {
+    background-color: rgb(245, 231, 255);
+}
+
+tbody tr:nth-child(2n-1) {
+    background-color: rgb(255, 245, 254);
+}
+
+.changeBtn {
+    color: rgb(219, 177, 255);
+    font-weight: bold;
+    background-color: transparent;
+    border: none;
+    border-radius: 16px;
+    padding: 4px 8px;
+}
+
+tbody tr:nth-child(2n) .changeBtn {
+    color: rgb(175, 175, 255);
+}
+
+.changeBtn:hover {
+    cursor: pointer;
+    background: var(--outside-color-border);
+}
+
+.deleteBtn {
+    border: none;
+    padding: 5px 12px;
+    background-color: var(--outside-color-border);
+    border-radius: 15px;
+    color: aliceblue;
+    font-weight: bold;
+}
+
+.deleteBtn:hover {
+    cursor: pointer;
+    background-color: rgb(212, 47, 83);
+}

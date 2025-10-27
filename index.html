@@ -9,39 +9,58 @@
 </head>
 
 <body>
-    <table>
-        <caption>All about books</caption>
-        <thead>
-            <tr>
-                <th>Title</th>
-                <th>Author</th>
-                <th>pages</th>
-            </tr>
-        </thead>
+    <div class="container">
+        <div id="tableDiv">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Author</th>
+                        <th>Pages</th>
+                        <th>Read</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
 
-        <tbody class="tableBody"></tbody>
-    </table>
+                <tbody class="tableBody"></tbody>
+            </table>
+        </div>
+        <div id="formDiv">
+            <button id="dialogBtn">Add New Book</button>
 
-    <form>
-        <legend>Book Form
-            <div>
-                <label for="title">Book Title</label>
-                <input id="title" type="text" value="">
-            </div>
+            <dialog>
+                <form id="form">
+                    <legend>Book Form</legend>
+                    <div>
+                        <label for="title">Book Title</label>
+                        <input id="title" type="text" value="">
+                    </div>
 
-            <div>
-                <label for="author">Book Author</label>
-                <input id="author" type="text" value="">
-            </div>
+                    <div>
+                        <label for="author">Book Author</label>
+                        <input id="author" type="text" value="">
+                    </div>
 
-            <div>
-                <label for="pages">Book Pages</label>
-                <input id="pages" type="text" value="">
-            </div>
-            <button id="addBook">Add book</button>
-        </legend>
-    </form>
+                    <div>
+                        <label for="pages">Book Pages</label>
+                        <input id="pages" type="number" value="">
+                    </div>
 
+                    <div>
+                        <label for="read">Is it read?</label>
+                        <select id="read">
+                            <option value="yes">yes</option>
+                            <option value="no">no</option>
+                        </select>
+                    </div>
+                    <button id="addBook">Add book</button>
+
+                </form>
+
+            </dialog>
+        </div>
+    </div>
     <script src="script.js"></script>
 </body>
 

@@ -4,8 +4,12 @@ const inputAuthor = document.querySelector("#author")
 const inputPages = document.querySelector("#pages")
 const inputRead = document.querySelector("#read");
 const addBookBtn = document.querySelector("#addBook");
+const dialog = document.querySelector("dialog");
+const dialogBtn = document.querySelector("#dialogBtn")
+
 
 const myLibrary = [];
+
 
 function Book(title, author, pages, read) {
     this.title = title;
@@ -43,10 +47,7 @@ function addBookToLibrary(book) {
 
     }
 
-    //read function
-
     addChangeReadBtn(objectTr, book);
-    //delete book button
 
     addDeleteBookBtn(objectTr, book);
 }
@@ -57,11 +58,10 @@ function addBookToLibrary(book) {
 function addChangeReadBtn(someTr, someBook) {
     const changeReadBtn = document.createElement("button");
     const readTd = someTr.querySelector(".read")
-    changeReadBtn.textContent = "Change Button";
+    changeReadBtn.textContent = "Change Status";
+    changeReadBtn.classList = "changeBtn";
     changeReadBtn.addEventListener("click", () => {
         someBook.setRead();
-        // objectTr.dataset.read = book.read;
-
         readTd.textContent = someBook.read;
     });
 
@@ -70,10 +70,12 @@ function addChangeReadBtn(someTr, someBook) {
     someTr.appendChild(btnTd);
 }
 
+//delete function
 
 function addDeleteBookBtn(someTr, someBook) {
     const deleteBtn = document.createElement("button");
     deleteBtn.textContent = "Delete";
+    deleteBtn.classList = "deleteBtn";
     deleteBtn.addEventListener("click", () => {
         tableBody.removeChild(someTr);
         myLibrary.splice(myLibrary.indexOf(someBook), 1);
@@ -85,30 +87,33 @@ function addDeleteBookBtn(someTr, someBook) {
 }
 
 
-function addButtonToTr() {
-    let tr = document.querySelectorAll("table tbody tr");
-
-    Array.from(tr).forEach(function (trArray) {
-        let button = document.createElement("button");
-        let td = document.createElement("td");
-        button.innerText = "buy";
-        button.className = "btn_buy";
-        td.append(button);
-        trArray.append(td);
-    });
-}
-
-
-
-
 const book1 = new Book("The Hobbit", "J.R.R. Tolkien", "295", "no");
 const book2 = new Book("Harry Potter", "J.K. Rowling", "500", "yes");
 addBookToLibrary(book1);
 addBookToLibrary(book2);
+addBookToLibrary(new Book("Harry Potter", "J.K. Rowling", "500", "yes"));
+addBookToLibrary(new Book("Harry Potter", "J.K. Rowling", "500", "yes"));
+addBookToLibrary(new Book("Harry Potter", "J.K. Rowling", "500", "yes"));
+addBookToLibrary(new Book("Harry Potter", "J.K. Rowling", "500", "yes"));
+addBookToLibrary(new Book("Harry Potter", "J.K. Rowling", "500", "yes"));
 
+
+//dialog open
+
+dialogBtn.addEventListener("click", () => {
+    dialog.showModal();
+});
 
 addBookBtn.addEventListener("click", (event) => {
     event.preventDefault();
     const newBook = new Book(`${inputTitle.value}`, `${inputAuthor.value}`, `${inputPages.value}`, `${inputRead.value}`);
     addBookToLibrary(newBook);
+    dialog.close()
+});
+
+const closeBtn = document.createElement("button");
+closeBtn.innerText = "Close";
+dialog.appendChild(closeBtn)
+closeBtn.addEventListener("click", () => {
+    dialog.close();
 })

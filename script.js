@@ -43,6 +43,9 @@ function addBookToLibrary(book) {
             keyTd.textContent = book[key];
             objectTr.appendChild(keyTd);
 
+            if (key == "read") {
+                keyTd.setAttribute("id", book.read);
+            }
         }
 
     }
@@ -63,6 +66,7 @@ function addChangeReadBtn(someTr, someBook) {
     changeReadBtn.addEventListener("click", () => {
         someBook.setRead();
         readTd.textContent = someBook.read;
+        readTd.setAttribute("id", someBook.read);
     });
 
     const btnTd = document.createElement("td");

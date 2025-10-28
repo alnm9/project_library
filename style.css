@@ -2,15 +2,39 @@
     --outside-color-border: rgb(114, 83, 155);
 }
 
+@font-face {
+    font-family: 'lobster_two';
+    src: url('fonts/lobstertwo-bold-webfont.woff2') format('woff2'),
+        url('fonts/lobstertwo-bold-webfont.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'lobster_two';
+    src: url('fonts/lobstertwo-regular-webfont.woff2') format('woff2'),
+        url('fonts/lobstertwo-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'materegular';
+    src: url('fonts/mate-regular-webfont.woff2') format('woff2'),
+        url('fonts/mate-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
 
-body {
-    /* min-height: 100vh; */
-}
 
 .container {
     margin-top: 120px;
@@ -42,10 +66,6 @@ td {
 }
 
 
-th {
-    padding: 24px 0px;
-    font-size: 21px;
-}
 
 tr td:first-child,
 tr th:first-child {
@@ -56,7 +76,9 @@ tr th:first-child {
 
 td {
     border-bottom: 2px solid var(--outside-color-border);
-    color: rgb(28, 0, 54);
+    color: rgb(54, 0, 104);
+    font-family: "materegular";
+
 }
 
 tbody tr:last-child td {
@@ -64,6 +86,10 @@ tbody tr:last-child td {
 }
 
 th {
+    padding: 24px 0px;
+    font-size: 22px;
+    font-family: 'lobster_two';
+    font-weight: bold;
     border-bottom: 4px solid var(--outside-color-border);
     border-top: 8px solid var(--outside-color-border);
     color: white;
@@ -126,11 +152,13 @@ tbody tr:nth-child(2n-1) {
 
 .changeBtn {
     color: rgb(219, 177, 255);
-    font-weight: bold;
+    /* font-weight: bold; */
     background-color: transparent;
     border: none;
     border-radius: 16px;
     padding: 4px 8px;
+    font-family: "materegular";
+    font-size: 16px;
 }
 
 tbody tr:nth-child(2n) .changeBtn {
@@ -148,7 +176,10 @@ tbody tr:nth-child(2n) .changeBtn {
     background-color: var(--outside-color-border);
     border-radius: 15px;
     color: aliceblue;
-    font-weight: bold;
+    /* font-weight: bold; */
+    font-family: "materegular";
+    font-size: 16px;
+
 }
 
 .deleteBtn:hover {

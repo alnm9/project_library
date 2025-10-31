@@ -115,9 +115,8 @@ addBookBtn.addEventListener("click", (event) => {
     dialog.close()
 });
 
-const closeBtn = document.createElement("button");
-closeBtn.innerText = "Close";
-dialog.appendChild(closeBtn)
-closeBtn.addEventListener("click", () => {
+const closeBtn = document.querySelector("#closeBtn");
+closeBtn.addEventListener("click", (event) => {
+    event.preventDefault();
     dialog.close();
 })

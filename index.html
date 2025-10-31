@@ -30,34 +30,37 @@
             <button id="dialogBtn">Add New Book</button>
 
             <dialog>
-                <form id="form">
-                    <legend>Book Form</legend>
-                    <div>
-                        <label for="title">Book Title</label>
-                        <input id="title" type="text" value="">
-                    </div>
+                <div class="dialogContainer">
+                    <form id="form">
+                        <legend>Book Form</legend>
+                        <div class="formRow">
+                            <label for="title">Book Title</label>
+                            <input id="title" type="text" value="">
+                        </div>
 
-                    <div>
-                        <label for="author">Book Author</label>
-                        <input id="author" type="text" value="">
-                    </div>
+                        <div class="formRow">
+                            <label for="author">Book Author</label>
+                            <input id="author" type="text" value="">
+                        </div>
 
-                    <div>
-                        <label for="pages">Book Pages</label>
-                        <input id="pages" type="number" value="">
-                    </div>
+                        <div class="formRow">
+                            <label for="pages">Book Pages</label>
+                            <input id="pages" type="number" value="">
+                        </div>
 
-                    <div>
-                        <label for="read">Is it read?</label>
-                        <select id="read">
-                            <option value="yes">yes</option>
-                            <option value="no">no</option>
-                        </select>
-                    </div>
-                    <button id="addBook">Add book</button>
-
-                </form>
-
+                        <div class="formRow last">
+                            <label for="read">Is it read?</label>
+                            <select id="read">
+                                <option value="yes">yes</option>
+                                <option value="no">no</option>
+                            </select>
+                        </div>
+                        <div class="btnsContainer">
+                            <button id="addBook">Add book</button>
+                            <button id="closeBtn">Close</button>
+                        </div>
+                    </form>
+                </div>
             </dialog>
         </div>
     </div>

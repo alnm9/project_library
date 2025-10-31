@@ -56,7 +56,6 @@ table {
 }
 
 
-
 th,
 td {
     border: none;
@@ -65,24 +64,11 @@ td {
     font-size: 18px;
 }
 
-
-
-tr td:first-child,
-tr th:first-child {
-    border-left: 8px solid var(--outside-color-border);
-
-}
-
-
 td {
     border-bottom: 2px solid var(--outside-color-border);
     color: rgb(54, 0, 104);
     font-family: "materegular";
 
-}
-
-tbody tr:last-child td {
-    border-bottom: 8px solid var(--outside-color-border);
 }
 
 th {
@@ -93,6 +79,17 @@ th {
     border-bottom: 4px solid var(--outside-color-border);
     border-top: 8px solid var(--outside-color-border);
     color: white;
+}
+
+tr td:first-child,
+tr th:first-child {
+    border-left: 8px solid var(--outside-color-border);
+
+}
+
+
+tbody tr:last-child td {
+    border-bottom: 8px solid var(--outside-color-border);
 }
 
 
@@ -193,4 +190,117 @@ tbody tr:nth-child(2n) .changeBtn {
 
 #yes {
     background-color: rgba(122, 255, 95, 0.3);
+}
+
+#form {
+    padding: 25px 45px 25px 35px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 25px;
+    background-color: rgb(119, 194, 255);
+    flex: 1;
+}
+
+.formRow input {
+    width: 180px;
+    height: 28px;
+    font-size: 17px;
+    font-family: "materegular";
+    padding: 6px;
+    border-radius: 10px;
+    border: 1px solid grey;
+    outline: none;
+}
+
+.formRow label {
+    width: 100px;
+    text-align: start;
+}
+
+.formRow {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    justify-content: start;
+}
+
+
+
+#form div:nth-last-child(2) {
+    margin: 10px 0;
+    /* margin-left: -115px; */
+}
+
+select,
+::picker(select) {
+    appearance: base-select;
+}
+
+select::picker-icon {
+    color: blueviolet;
+}
+
+select {
+
+    padding: 3px 7px;
+    font-size: 15px;
+    transition: 0.2s;
+    min-width: 65px;
+    background-color: aliceblue;
+    border: 1px solid rgb(153, 153, 153);
+    border-radius: 10px;
+}
+
+select:hover {
+    background-color: rgb(222, 214, 255);
+}
+
+::picker(select) {
+    border: none;
+    opacity: 0;
+    transition: all 0.2s allow-discrete;
+
+}
+
+
+::picker(select):popover-open {
+    opacity: 1;
+}
+
+option {
+    padding: 3px 7px;
+    border: 1px rgb(170, 170, 170) solid;
+}
+
+option:hover,
+option:focus {
+    background-color: rgb(222, 214, 255);
+}
+
+legend {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+
+
+dialog {
+    border: 2px solid rgb(62, 116, 160);
+    border-radius: 15px;
+    background-color: transparent;
+    transition: 2s;
+}
+
+
+dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.363);
+
+}
+
+.btnsContainer {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
 }

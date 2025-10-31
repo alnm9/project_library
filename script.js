@@ -3,10 +3,9 @@ const inputTitle = document.querySelector("#title")
 const inputAuthor = document.querySelector("#author")
 const inputPages = document.querySelector("#pages")
 const inputRead = document.querySelector("#read");
-const addBookBtn = document.querySelector("#addBook");
 const dialog = document.querySelector("dialog");
 const dialogBtn = document.querySelector("#dialogBtn")
-
+const form = document.querySelector("#form");
 
 const myLibrary = [];
 
@@ -108,15 +107,29 @@ dialogBtn.addEventListener("click", () => {
     dialog.showModal();
 });
 
-addBookBtn.addEventListener("click", (event) => {
+
+
+form.addEventListener("submit", (event) => {
+
     event.preventDefault();
+
     const newBook = new Book(`${inputTitle.value}`, `${inputAuthor.value}`, `${inputPages.value}`, `${inputRead.value}`);
     addBookToLibrary(newBook);
-    dialog.close()
-});
+    dialog.close();
+    clearForm();
+})
+
+
+function clearForm() {
+    inputAuthor.value = "";
+    inputPages.value = "";
+    inputTitle.value = "";
+}
+
 
 const closeBtn = document.querySelector("#closeBtn");
 closeBtn.addEventListener("click", (event) => {
     event.preventDefault();
     dialog.close();
+    clearForm();
 })

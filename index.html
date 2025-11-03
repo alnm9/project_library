@@ -27,7 +27,7 @@
             </table>
         </div>
         <div id="formDiv">
-            <button id="dialogBtn">Add New Book</button>
+            <button id="dialogBtn">Add a new Book to the Collection!</button>
 
             <dialog>
                 <div class="dialogContainer">
@@ -35,17 +35,17 @@
                         <legend>Book Form</legend>
                         <div class="formRow">
                             <label for="title">Book Title</label>
-                            <input id="title" type="text" value="">
+                            <input id="title" name="title" type="text" required>
                         </div>
 
                         <div class="formRow">
                             <label for="author">Book Author</label>
-                            <input id="author" type="text" value="">
+                            <input id="author" type="text" required>
                         </div>
 
                         <div class="formRow">
                             <label for="pages">Book Pages</label>
-                            <input id="pages" type="number" value="">
+                            <input id="pages" type="number" required>
                         </div>
 
                         <div class="formRow last">
@@ -56,8 +56,8 @@
                             </select>
                         </div>
                         <div class="btnsContainer">
-                            <button id="addBook">Add book</button>
-                            <button id="closeBtn">Close</button>
+                            <button class="formBtn" id="addBook">Add book</button>
+                            <button class="formBtn" id="closeBtn">Close</button>
                         </div>
                     </form>
                 </div>

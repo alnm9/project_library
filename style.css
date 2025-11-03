@@ -1,5 +1,8 @@
 :root {
-    --outside-color-border: rgb(114, 83, 155);
+    --outside-color-border: rgb(101 61 137);
+    --dialog-color: var(--outside-color-border);
+    --gradient-color: rgb(255 96 0 / 29%);
+    --form-background: rgb(232 217 197);
 }
 
 @font-face {
@@ -28,6 +31,15 @@
 
 }
 
+@font-face {
+    font-family: 'satisfyregular';
+    src: url('fonts/satisfy-regular-webfont.woff2') format('woff2'),
+        url('fonts/satisfy-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
 
 * {
     padding: 0;
@@ -35,6 +47,16 @@
     box-sizing: border-box;
 }
 
+body {
+    background: linear-gradient(180deg, var(--gradient-color), rgb(255, 255, 255) 25% 65%, var(--gradient-color));
+    height: 90.8vh;
+}
+
+button:hover {
+    cursor: pointer;
+    transition: 0.3s;
+
+}
 
 .container {
     margin-top: 120px;
@@ -45,14 +67,12 @@
     gap: 100px;
 }
 
-#tableDiv {}
-
-#formDiv {}
-
 table {
     /* border-collapse: collapse; */
     border-spacing: 0;
     text-align: center;
+    border: 2px rgba(0, 0, 0, 0.692) solid;
+    border-radius: 19px;
 }
 
 
@@ -108,9 +128,6 @@ tbody tr td:last-child {
     border-right: 8px solid var(--outside-color-border);
 }
 
-dialog {
-    margin: auto;
-}
 
 tr th:nth-child(3),
 tr td:nth-child(3),
@@ -163,7 +180,6 @@ tbody tr:nth-child(2n) .changeBtn {
 }
 
 .changeBtn:hover {
-    cursor: pointer;
     background: var(--outside-color-border);
 }
 
@@ -180,7 +196,6 @@ tbody tr:nth-child(2n) .changeBtn {
 }
 
 .deleteBtn:hover {
-    cursor: pointer;
     background-color: rgb(212, 47, 83);
 }
 
@@ -198,7 +213,7 @@ tbody tr:nth-child(2n) .changeBtn {
     align-items: center;
     flex-direction: column;
     gap: 25px;
-    background-color: rgb(156, 172, 207);
+    background-color: var(--form-background);
     flex: 1;
 }
 
@@ -209,7 +224,7 @@ tbody tr:nth-child(2n) .changeBtn {
     font-family: "materegular";
     padding: 6px;
     border-radius: 10px;
-    border: 1px solid grey;
+    border: 1px solid var(--dialog-color);
     outline: none;
 }
 
@@ -238,7 +253,7 @@ select,
 }
 
 select::picker-icon {
-    color: blueviolet;
+    color: var(--dialog-color);
 }
 
 select {
@@ -248,12 +263,12 @@ select {
     transition: 0.2s;
     min-width: 65px;
     background-color: aliceblue;
-    border: 1px solid rgb(153, 153, 153);
+    border: 1px solid var(--dialog-color);
     border-radius: 10px;
 }
 
 select:hover {
-    background-color: rgb(222, 214, 255);
+    background-color: rgb(233, 220, 253);
 }
 
 ::picker(select) {
@@ -268,14 +283,18 @@ select:hover {
     opacity: 1;
 }
 
+select option:first-child {
+    border-bottom: none;
+}
+
 option {
     padding: 3px 7px;
-    border: 1px rgb(170, 170, 170) solid;
+    border: 1px var(--dialog-color) solid;
 }
 
 option:hover,
 option:focus {
-    background-color: rgb(222, 214, 255);
+    background-color: rgb(233, 220, 253);
 }
 
 legend {
@@ -284,12 +303,20 @@ legend {
     font-weight: normal;
     margin-bottom: 5px;
     text-decoration: underline;
+    color: rgba(0, 0, 0, 0.856);
 }
 
-
+#dialogBtn {
+    font-family: "satisfyregular";
+    background-color: transparent;
+    border: none;
+    font-size: 30px;
+    letter-spacing: 0.5px;
+}
 
 dialog {
-    border: 2px solid rgb(83, 85, 160);
+    margin: auto;
+    border: 4px solid var(--dialog-color);
     opacity: 0;
     border-radius: 15px;
     background-color: transparent;
@@ -318,7 +345,7 @@ dialog::backdrop {
 }
 
 dialog:open::backdrop {
-    background-color: rgba(0, 0, 0, 0.336);
+    background-color: rgba(0, 0, 0, 0.603);
 
 }
 
@@ -333,4 +360,21 @@ dialog:open::backdrop {
     justify-content: space-evenly;
     align-items: center;
     width: 100%;
+}
+
+.formBtn {
+    padding: 7px 10px;
+    font-family: "materegular";
+    font-size: 16px;
+    border-radius: 12px;
+    border: none;
+    outline: none;
+    background-color: var(--dialog-color);
+    color: white;
+    opacity: 0.85;
+}
+
+.formBtn:hover {
+    opacity: 1;
+    transition: 0.5s;
 }

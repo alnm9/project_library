@@ -6,23 +6,25 @@ const inputRead = document.querySelector("#read");
 const dialog = document.querySelector("dialog");
 const dialogBtn = document.querySelector("#dialogBtn")
 const form = document.querySelector("#form");
+const closeBtn = document.querySelector("#closeBtn");
+
 
 const myLibrary = [];
 
 
-function Book(title, author, pages, read) {
+function Book(title, author, pages, status) {
     this.title = title;
     this.author = author;
     this.pages = pages
-    this.read = read;
+    this.status = status;
 }
 
 
 Book.prototype.setRead = function () {
-    if (this.read == "no") {
-        this.read = "yes";
-    } else if (this.read == "yes") {
-        this.read = "no";
+    if (this.status == "Not read") {
+        this.status = "Read";
+    } else if (this.status == "Read") {
+        this.status = "Not read";
     }
 };
 
@@ -30,42 +32,76 @@ function addBookToLibrary(book) {
     myLibrary.push(book);
     const objectTr = document.createElement("tr");
     tableBody.appendChild(objectTr);
-    objectTr.setAttribute("id", crypto.randomUUID());
-
     //strictly reffers to the object keys and its content
     for (let key in book) {
 
-        if (key == "title" || key == "author" || key == "pages" || key == "read") {
+        if (key == "title" || key == "author" || key == "pages" || key == "status") {
 
             const keyTd = document.createElement("td");
             keyTd.setAttribute("class", key);
             keyTd.textContent = book[key];
             objectTr.appendChild(keyTd);
 
-            if (key == "read") {
-                keyTd.setAttribute("id", book.read);
+            if (key == "status") {
+                if (keyTd.textContent == "Read") {
+                    keyTd.setAttribute("style", "background-color: rgba(122, 255, 95, 0.3)");
+                } else {
+                    keyTd.setAttribute("style", "background-color: rgba(255, 91, 91, 0.3)");
+                }
+
             }
         }
 
     }
 
-    addChangeReadBtn(objectTr, book);
+    addChangeStatusBtn(objectTr, book);
 
     addDeleteBookBtn(objectTr, book);
 }
 
 
-//read function
 
-function addChangeReadBtn(someTr, someBook) {
+//dialog open
+
+dialogBtn.addEventListener("click", () => {
+    dialog.showModal();
+});
+
+
+
+form.addEventListener("submit", (event) => {
+
+    event.preventDefault();
+
+    const newBook = new Book(`${inputTitle.value}`, `${inputAuthor.value}`, `${inputPages.value}`, `${inputRead.value}`);
+    addBookToLibrary(newBook);
+    dialog.close();
+    clearForm();
+})
+
+
+closeBtn.addEventListener("click", (event) => {
+    event.preventDefault();
+    dialog.close();
+    clearForm();
+})
+
+
+//change status function
+
+function addChangeStatusBtn(someTr, someBook) {
     const changeReadBtn = document.createElement("button");
-    const readTd = someTr.querySelector(".read")
+    const readTd = someTr.querySelector(".status")
     changeReadBtn.textContent = "Change Status";
     changeReadBtn.classList = "changeBtn";
     changeReadBtn.addEventListener("click", () => {
         someBook.setRead();
-        readTd.textContent = someBook.read;
-        readTd.setAttribute("id", someBook.read);
+        readTd.textContent = someBook.status;
+        if (someBook.status == "Read") {
+            readTd.setAttribute("style", "background-color: rgba(122, 255, 95, 0.3)");
+        } else {
+            readTd.setAttribute("style", "background-color: rgba(255, 91, 91, 0.3)");
+        }
     });
 
     const btnTd = document.createElement("td");
@@ -90,35 +126,6 @@ function addDeleteBookBtn(someTr, someBook) {
 }
 
 
-const book1 = new Book("The Hobbit", "J.R.R. Tolkien", "295", "no");
-const book2 = new Book("Harry Potter", "J.K. Rowling", "500", "yes");
-addBookToLibrary(book1);
-addBookToLibrary(book2);
-addBookToLibrary(new Book("Harry Potter", "J.K. Rowling", "500", "yes"));
-addBookToLibrary(new Book("Harry Potter", "J.K. Rowling", "500", "yes"));
-addBookToLibrary(new Book("Harry Potter", "J.K. Rowling", "500", "yes"));
-addBookToLibrary(new Book("Harry Potter", "J.K. Rowling", "500", "yes"));
-addBookToLibrary(new Book("Harry Potter", "J.K. Rowling", "500", "yes"));
-
-
-//dialog open
-
-dialogBtn.addEventListener("click", () => {
-    dialog.showModal();
-});
-
-
-
-form.addEventListener("submit", (event) => {
-
-    event.preventDefault();
-
-    const newBook = new Book(`${inputTitle.value}`, `${inputAuthor.value}`, `${inputPages.value}`, `${inputRead.value}`);
-    addBookToLibrary(newBook);
-    dialog.close();
-    clearForm();
-})
-
 
 function clearForm() {
     inputAuthor.value = "";
@@ -126,10 +133,12 @@ function clearForm() {
     inputTitle.value = "";
 }
 
-
-const closeBtn = document.querySelector("#closeBtn");
-closeBtn.addEventListener("click", (event) => {
-    event.preventDefault();
-    dialog.close();
-    clearForm();
-})
+addBookToLibrary(new Book("The Hobbit", "J.R.R. Tolkien", "310", "Not read"));
+addBookToLibrary(new Book("Carrie", "Stephen King", "199", "Read"));
+addBookToLibrary(new Book("The Shining", "Stephen King", "439", "Read"));
+addBookToLibrary(new Book("Interview with the Vampire", "Anne Rice", "342", "Not read"));
+addBookToLibrary(new Book("Midnight's Children", "Salman Rushdie", "446", "Not read"));
+addBookToLibrary(new Book("Anna Karenina", "Leo Tolstoy", "864", "Not read"));
+addBookToLibrary(new Book("Harry Potter and the Philosopher's Stone", "J.K. Rowling", "223", "Read"));
+addBookToLibrary(new Book("Rebecca", "Daphne du Maurier", "446", "Not read"));
+addBookToLibrary(new Book("The Tale of Peter Rabbit", "Beatrix Potter", "56", "Read"));

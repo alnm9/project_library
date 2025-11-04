@@ -17,7 +17,7 @@
                         <th>Title</th>
                         <th>Author</th>
                         <th>Pages</th>
-                        <th>Read</th>
+                        <th>Status</th>
                         <th></th>
                         <th></th>
                     </tr>
@@ -30,9 +30,10 @@
             <button id="dialogBtn">Add a new Book to the Collection!</button>
 
             <dialog>
-                <div class="dialogContainer">
-                    <form id="form">
-                        <legend>Book Form</legend>
+                <form id="form">
+                    <legend>Book Form</legend>
+                    <div class="dialogContainer">
+
                         <div class="formRow">
                             <label for="title">Book Title</label>
                             <input id="title" name="title" type="text" required>
@@ -49,18 +50,19 @@
                         </div>
 
                         <div class="formRow last">
-                            <label for="read">Is it read?</label>
+                            <label for="read">What is book's status?</label>
                             <select id="read">
-                                <option value="yes">yes</option>
-                                <option value="no">no</option>
+                                <option value="Read">Read</option>
+                                <option value="Not read">Not read</option>
                             </select>
                         </div>
                         <div class="btnsContainer">
                             <button class="formBtn" id="addBook">Add book</button>
                             <button class="formBtn" id="closeBtn">Close</button>
                         </div>
-                    </form>
-                </div>
+                    </div>
+
+                </form>
             </dialog>
         </div>
     </div>

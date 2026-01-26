@@ -12,21 +12,25 @@ const closeBtn = document.querySelector("#closeBtn");
 const myLibrary = [];
 
 
-function Book(title, author, pages, status) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages
-    this.status = status;
+class Book {
+    constructor(title, author, pages, status) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.status = status;
+    }
+
+    setRead() {
+        if (this.status == "Not read") {
+            this.status = "Read";
+        } else if (this.status == "Read") {
+            this.status = "Not read";
+        }
+
+    }
 }
 
 
-Book.prototype.setRead = function () {
-    if (this.status == "Not read") {
-        this.status = "Read";
-    } else if (this.status == "Read") {
-        this.status = "Not read";
-    }
-};
 
 function addBookToLibrary(book) {
     myLibrary.push(book);

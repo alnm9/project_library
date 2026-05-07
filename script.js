@@ -64,12 +64,31 @@ function addBookToLibrary(book) {
 }
 
 
-
 //dialog open
 
 dialogBtn.addEventListener("click", () => {
     dialog.showModal();
 });
+
+inputTitle.addEventListener("input", () => {
+    inputTitle.reportValidity();
+
+    if (inputTitle.validity.tooShort || inputTitle.validity.valueMissing) {
+        inputTitle.setCustomValidity("The book needs a real title!");
+    } else {
+        inputTitle.setCustomValidity("");
+    }
+})
+
+inputAuthor.addEventListener("input", () => {
+    inputAuthor.reportValidity();
+
+    if (inputAuthor.validity.tooShort || inputAuthor.validity.valueMissing) {
+        inputAuthor.setCustomValidity("The book needs a real author!");
+    } else {
+        inputAuthor.setCustomValidity("");
+    }
+})
 
 
 
@@ -82,6 +101,8 @@ form.addEventListener("submit", (event) => {
     dialog.close();
     clearForm();
 })
+
+
 
 
 closeBtn.addEventListener("click", (event) => {
